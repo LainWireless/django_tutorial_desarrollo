@@ -18,7 +18,7 @@ class IndexView(generic.ListView):
         """
         return Question.objects.filter(
             pub_date__lte=timezone.now()
-        ).order_by('-pub_datexzxz')[:5]
+        ).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
@@ -45,7 +45,7 @@ def vote(request, question_id):
         # Redisplay the question voting form.
         return render(request, 'polls/detail.html', {
             'question': question,
-            'error_message': "You didn't select a choice.",
+            'error_message': "You didn't select a choice. No has seleccionado una opción.",
         })
     else:
         selected_choice.votes += 1
